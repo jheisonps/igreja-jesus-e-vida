@@ -1,0 +1,31 @@
+IEAD MINISTÉRIO JESUS É VIDA — ATUALIZAÇÃO 02/10/2026
+
+COMO ATUALIZAR
+1. Por precaução, exporte uma cópia do banco atual: Firebase > Realtime Database > Dados > menu de três pontos > Exportar JSON.
+2. Extraia este ZIP e publique o conteúdo da pasta igreja-jesus-e-vida-main no mesmo projeto de hospedagem usado atualmente. O index.html deve ficar na raiz da publicação, junto com firebase-config.js e a pasta assets.
+3. Mantenha o mesmo projeto Firebase. O arquivo firebase-config.js deste pacote é idêntico ao original recebido.
+4. Abra o aplicativo com internet depois da publicação. Se ainda aparecer a versão antiga, feche e abra novamente ou atualize a página.
+Não importe um banco vazio nem exclua dados do Firebase para instalar esta atualização.
+
+O QUE MUDOU
+- Removidas as telas internas com logo repetida e a espera artificial na abertura. O sistema do celular pode exibir sua própria tela de abertura.
+- Registro de frequência identificado como Turmas e grupos; aluno passa a ser membro.
+- Gerenciar grupos separado de Adicionar membro. Exclusão com confirmação; grupos com membros ativos são protegidos. Grupos excluídos deixam de aparecer nas chamadas novas, mas continuam disponíveis no histórico.
+- Categoria Outro permite escrever uma categoria financeira própria.
+- Cadastro de membro com foto da galeria/câmera, nome, nascimento, idade calculada, sexo, estado civil, profissão, endereço, telefone e e-mail. Todos os campos são opcionais.
+- Lista alfabética com busca e informações expansíveis; edição e complementação dos cadastros.
+- Os nomes que já estavam na frequência aparecem automaticamente na lista de membros, sem uma migração destrutiva.
+- Ao adicionar alguém a um grupo, é possível escolher um membro já cadastrado.
+
+PRESERVAÇÃO DOS HISTÓRICOS
+As funções novas não apagam nem recriam os registros de frequência. Os IDs antigos dos participantes continuam iguais. O cadastro acrescenta um vínculo member_id; as chamadas continuam usando o student_id original. As movimentações financeiras anteriores também não são regravadas.
+Apenas abrir a lista não grava nem migra dados. Ao completar um cadastro, os dados são salvos em church/members, mantendo a estrutura antiga de church/students e church/attendance.
+Nomes iguais não são unidos automaticamente. Para vincular registros da mesma pessoa: Lista de membros > expandir nome > Editar / completar cadastro > Esta pessoa já tem outro cadastro? > selecionar cadastro correto > confirmar vínculo. Salve alterações antes de vincular. Os dados do cadastro de origem são mantidos internamente; cada registro antigo de participação e seu histórico continuam separados.
+Remover do grupo arquiva a participação e preserva o cadastro e as chamadas antigas.
+
+VERIFICAÇÃO
+Testado em navegador com Firebase simulado e dados fictícios: manutenção dos IDs e das chamadas, edição, vínculo entre cadastros, cadastro sem campos preenchidos, idade, foto, adição em grupo, exclusão de grupo vazio, bloqueio da exclusão de grupo com membros e categoria personalizada. Layout verificado em celular e computador.
+O banco real da igreja não foi acessado ou alterado durante a preparação. As regras reais do Firebase não vieram no ZIP e não puderam ser verificadas. Caso elas restrinjam explicitamente os caminhos permitidos, church/members precisa ter o mesmo acesso autorizado dos outros registros da igreja; não torne o banco público.
+
+MANUTENÇÃO
+A nova interface está em assets/app-20261002.js e assets/style-20261002.css. O arquivo assets/member-components.js é a cópia legível dos novos componentes, já incorporados ao bundle. Firebase e service worker permanecem em arquivos separados. Arquivos antigos foram mantidos para evitar falhas em sessões que ainda estejam usando a versão anterior.
