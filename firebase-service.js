@@ -33,11 +33,11 @@ export async function saveRecord(b){
  else if(b.action==='member'){
   const current=(await get(ref(db,'church'))).val()||{};
   const id=b.id?resolveMember(current,b.id).id:uid();
-  const fields=['name','birthDate','sex','maritalStatus','profession','neighborhood','street','number','city','phone','email','photo'];
+  const fields=['name','birthDate','sex','maritalStatus','profession','neighborhood','street','number','city','phone','email','photo','baptismChurch','baptismDate','baptismPastor','admissionType','admissionDate','congregation','churchRole','ministry','churchNotes'];
   if(!b.profile||typeof b.profile!=='object')throw Error('Cadastro inválido.');
-  for(const field of fields){const value=b.profile[field]??'';const max=field==='photo'?650000:field==='email'?254:150;
+  for(const field of fields){if(!Object.prototype.hasOwnProperty.call(b.profile,field))continue;const value=b.profile[field]??'';const max=field==='photo'?650000:field==='churchNotes'?2000:field==='email'?254:150;
    if(typeof value!=='string'||value.length>max)throw Error(field==='photo'?'A foto ficou muito grande. Escolha outra imagem.':'Confira os dados preenchidos.');
-   if(field==='birthDate'&&value&&(!date(value)||value>new Date().toLocaleDateString('en-CA',{timeZone:'America/Sao_Paulo'})))throw Error('Data de nascimento inválida.');
+   if(['birthDate','baptismDate','admissionDate'].includes(field)&&value&&(!date(value)||value>new Date().toLocaleDateString('en-CA',{timeZone:'America/Sao_Paulo'})))throw Error('Confira as datas: informe uma data válida, até o dia de hoje.');
    if(field==='photo'&&value&&!/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(value))throw Error('Foto inválida.');
    if(field==='sex'&&value&&!['M','F'].includes(value))throw Error('Sexo inválido.');
    updates['members/'+id+'/'+field]=value.trim();

@@ -28,4 +28,10 @@ Testado em navegador com Firebase simulado e dados fictícios: manutenção dos 
 O banco real da igreja não foi acessado ou alterado durante a preparação. As regras reais do Firebase não vieram no ZIP e não puderam ser verificadas. Caso elas restrinjam explicitamente os caminhos permitidos, church/members precisa ter o mesmo acesso autorizado dos outros registros da igreja; não torne o banco público.
 
 MANUTENÇÃO
-A nova interface está em assets/app-20261002.js e assets/style-20261002.css. O arquivo assets/member-components.js é a cópia legível dos novos componentes, já incorporados ao bundle. Firebase e service worker permanecem em arquivos separados. Arquivos antigos foram mantidos para evitar falhas em sessões que ainda estejam usando a versão anterior.
+A nova interface está em assets/app-20261003.js e assets/style-20261003.css. O arquivo assets/member-components.js é a cópia legível dos novos componentes, já incorporados ao bundle. Firebase e service worker permanecem em arquivos separados. Arquivos antigos foram mantidos para evitar falhas em sessões que ainda estejam usando a versão anterior.
+
+REPAGINAÇÃO DO CADASTRO — INFORMAÇÕES ECLESIÁSTICAS
+O formulário agora está dividido em duas partes: 01 Informações pessoais e 02 Informações eclesiásticas.
+Novos campos opcionais: igreja de batismo, data do batismo, pastor que batizou, tipo de admissão (com sugestões e texto livre), data de admissão, congregação, função na igreja, ministério a que pertence e observações eclesiásticas.
+A ficha expansível da lista de membros também organiza os dados nessas duas seções.
+Os novos campos são acrescentados ao cadastro existente; as chamadas e os registros financeiros não são modificados. Salvar um cadastro por uma tela antiga não apaga os campos novos ausentes naquela tela.

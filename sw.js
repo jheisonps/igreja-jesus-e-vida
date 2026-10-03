@@ -1,7 +1,7 @@
 // Atualiza somente os arquivos da interface. Nunca altera os registros do Firebase.
-const CACHE='iead-shell-v3-20261002';
+const CACHE='iead-shell-v4-20261003';
 const base=new URL('./',self.location.href);
-const SHELL=['./','./index.html','./assets/app-20261002.js','./assets/style-20261002.css','./firebase-service.js?v=20261002','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./manifest.webmanifest'];
+const SHELL=['./','./index.html','./assets/app-20261003.js','./assets/style-20261003.css','./firebase-service.js?v=20261003','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./manifest.webmanifest'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL.map(p=>new URL(p,base).href))).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('iead-shell-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
