@@ -28,7 +28,7 @@ Testado em navegador com Firebase simulado e dados fictícios: manutenção dos 
 O banco real da igreja não foi acessado ou alterado durante a preparação. As regras reais do Firebase não vieram no ZIP e não puderam ser verificadas. Caso elas restrinjam explicitamente os caminhos permitidos, church/members precisa ter o mesmo acesso autorizado dos outros registros da igreja; não torne o banco público.
 
 MANUTENÇÃO
-A nova interface está em assets/app-20261003-carta.js e assets/style-20261003-carta.css. O arquivo assets/member-components.js é a cópia legível dos novos componentes, já incorporados ao bundle. Firebase e service worker permanecem em arquivos separados. Arquivos antigos foram mantidos para evitar falhas em sessões que ainda estejam usando a versão anterior.
+A nova interface está em assets/app-20261003-carta-v2.js e assets/style-20261003-carta.css. O arquivo assets/member-components.js é a cópia legível dos novos componentes, já incorporados ao bundle. Firebase e service worker permanecem em arquivos separados. Arquivos antigos foram mantidos para evitar falhas em sessões que ainda estejam usando a versão anterior.
 
 REPAGINAÇÃO DO CADASTRO — INFORMAÇÕES ECLESIÁSTICAS
 O formulário agora está dividido em duas partes: 01 Informações pessoais e 02 Informações eclesiásticas.
@@ -36,11 +36,13 @@ Novos campos opcionais: igreja de batismo, data do batismo, pastor que batizou, 
 A ficha expansível da lista de membros também organiza os dados nessas duas seções.
 Os novos campos são acrescentados ao cadastro existente; as chamadas e os registros financeiros não são modificados. Salvar um cadastro por uma tela antiga não apaga os campos novos ausentes naquela tela.
 
-CARTA DE RECOMENDAÇÃO
-Novo botão CARTA na tela inicial. Selecione um membro existente ou digite o nome; preencha a emissão e a validade; toque em Gerar PDF A4.
-Baixar PDF salva o arquivo. Abrir PDF / imprimir abre o visualizador do navegador, onde é possível imprimir. Quando o aparelho permitir compartilhamento de arquivos, o botão Compartilhar PDF aparece. Caso contrário, baixe o PDF e envie pelo WhatsApp ou outro aplicativo.
-O arquivo tem uma página A4 (210 x 297 mm). Para imprimir, selecione A4 e tamanho real / 100%, sem cabeçalhos adicionais. As assinaturas continuam em branco.
-A carta enviada foi preservada integralmente como imagem PNG, sem recompressão, correção de dizeres ou alteração da arte. Nome e datas são textos vetoriais com fonte incorporada; os meses são escritos por extenso. O fundo mantém os 1055 x 1491 pixels do arquivo fornecido (aproximadamente 128 dpi em A4); não foi inventado detalhe nem prometida resolução adicional para o modelo original.
-A geração acontece no aparelho, com bibliotecas e fonte incluídas no pacote. Não exige serviço pago de PDF e não grava, exclui nem altera cadastros, frequências ou finanças.
-Depois de editar qualquer campo, é necessário gerar novamente para evitar baixar uma carta com dados anteriores. A validade não pode ser anterior à emissão.
-Verificação: geração e download reais no navegador com dados fictícios, acentos, dimensões A4, alinhamento visual, fonte incorporada e igualdade pixel a pixel do modelo original dentro do PDF.
+CARTA DE RECOMENDAÇÃO — VERSÃO VETORIAL
+Botão CARTA na tela inicial. Selecione o membro ou digite seu nome, informe emissão e validade e gere o PDF A4. O nome é convertido para maiúsculas e faz parte do parágrafo, com a mesma fonte, tamanho, cor e espaçamento. Nomes longos quebram a linha automaticamente, sem sublinhado. Limite de 150 caracteres.
+Cabeçalho, endereços, corpo, assinaturas, rodapé, bordas e linhas são desenhados com texto e vetores. Somente o emblema e a marca-d'água usam a arte original. A imagem exibida na tela é a referência de layout; abra o PDF para ver o documento reconstruído e preenchido.
+Os dizeres foram transcritos do modelo enviado, inclusive grafias incomuns presentes na imagem. Não foi feita revisão ortográfica, alteração de endereços ou mudança nos nomes dos pastores. A diagramação é uma reprodução fiel, não uma cópia pixel por pixel; as quebras de linha dependem do comprimento do nome.
+Datas preservam as posições e a fonte usadas na versão anterior. Assinaturas ficam em branco.
+Baixar PDF salva o arquivo; Abrir PDF / imprimir abre o visualizador. Compartilhar PDF aparece nos aparelhos que suportam compartilhamento de arquivos. Alternativamente, baixe e envie pelo aplicativo desejado.
+Impressão: papel A4 (210 x 297 mm), tamanho real / 100%.
+As fontes estão incorporadas ao PDF. A geração não grava dados no Firebase. Cadastros, frequências e finanças não foram modificados por esta atualização.
+Testado em navegador com dados fictícios, com nomes curtos, longos e 150 caracteres; todos os PDFs tiveram uma página A4. Texto extraível e renderização conferidos, sem erros de fonte.
+Código do documento: assets/letter-vector.js. Fontes derivadas de Nimbus Roman, com fontes originais, licença e script de conversão em assets/vendor.
