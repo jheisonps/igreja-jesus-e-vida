@@ -47,7 +47,7 @@ export async function createLetter({name,issueDate,validUntil}){
  page.drawSvgPath('M 0 11 C -2 -3 25 -5 25 9 C 25 22 2 23 4 11 C 5 5 14 6 14 11 M 29 8 C 38 -1 45 25 57 19 C 71 15 62 -5 48 2 C 38 8 52 17 57 9 M 28 2 L 31 5 L 28 8 L 25 5 Z',{x:495*sx,y:H-357*sy,scale:sx,borderColor:rgb(0,0,0),borderWidth:1.4});
  line(35,407,1020,407,1.5);line(35,407,35,1452,1.5);line(1020,407,1020,1452,1.5);line(35,1452,1020,1452,1.5);line(223,407,223,1452,1.4);
  const sidebar=[
- ['MATRIZ',445,true],['DIVINOPOLIS - SERRA',481,true],['Rua: Sabaá, Nº33',506,false],
+ ['MATRIZ',445,true],['DIVINOPOLIS - SERRA',481,true],['Rua: Sabará, Nº33',506,false],
  ['CONGREGAÇÕES',573,true],['ITABATÃ - BAHIA',622,true],['Rua: Rio Itapemirim',647,false],['Nº197, Triângulo Leal',671,false],
  ['TIMBUI - FUNDÃO',748,true],['Rua: João Acari',773,false],
  ['Bairro - Caçaroca',856,true],['Rua: Alfheu Correa',881,false],['Pimentel, Nº271 - Serra',905,false],
