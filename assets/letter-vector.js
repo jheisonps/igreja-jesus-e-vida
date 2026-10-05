@@ -47,12 +47,11 @@ export async function createLetter({name,issueDate,validUntil}){
  page.drawSvgPath('M 0 11 C -2 -3 25 -5 25 9 C 25 22 2 23 4 11 C 5 5 14 6 14 11 M 29 8 C 38 -1 45 25 57 19 C 71 15 62 -5 48 2 C 38 8 52 17 57 9 M 28 2 L 31 5 L 28 8 L 25 5 Z',{x:495*sx,y:H-357*sy,scale:sx,borderColor:rgb(0,0,0),borderWidth:1.4});
  line(35,407,1020,407,1.5);line(35,407,35,1452,1.5);line(1020,407,1020,1452,1.5);line(35,1452,1020,1452,1.5);line(223,407,223,1452,1.4);
  const sidebar=[
- ['MATRIZ',445,true],['DIVINÓPOLIS-SERRA',481,true],['Rua: Sabará, Nº 133',506,false],
- ['CONGREGAÇÕES',573,true],['ITABATÃ- BAHIA',622,true],['Run.- Rio Itapassúvim',647,false],['nº 227, Tnitrageto oel',671,false],
- ['TIMBUÍ-FUNDÃO',748,true],['Rua: João Acarl',773,false],
- ['BAIRRO- CACAROCA',856,true],['Rua: Alfrée Conrea',881,false],['Punante nº 277-Serra',905,false],
- ['BAIRRO-PALMEIRAS',983,true],['Ruá: FELGINVEN DO',1008,false],['AGBABGO HJY- 3arto',1031,false],
- ['BAIRRO: CIDADE',1125,true],['NOVA DA SERRA',1149,true],['( Caopada Grande)',1174,false],['Serra-ES',1200,false]];
+ ['MATRIZ',445,true],['DIVINOPOLIS - SERRA',481,true],['Rua: Sabaá, Nº33',506,false],
+ ['CONGREGAÇÕES',573,true],['ITABATÃ - BAHIA',622,true],['Rua: Rio Itapemirim',647,false],['Nº197, Triângulo Leal',671,false],
+ ['TIMBUI - FUNDÃO',748,true],['Rua: João Acari',773,false],
+ ['Bairro - Caçaroca',856,true],['Rua: Alfheu Correa',881,false],['Pimentel, Nº271 - Serra',905,false],
+ ['BAIRRO - PALMEIRAS',983,true],['Rua: Hilda Motta de',1008,false],['Oliveira, Nº42, Serra',1031,false]];
  sidebar.forEach(([s,y,b])=>text(s,48,y,b?20:19,b?bold:regular,166));line(49,451,123,451,.7);line(49,579,208,579,.7);
  function paragraph(runs,top,{indent=0,size=20,leading=29}={}){
   const left=239,right=1004;let x=left+indent,y=top,lineWords=[];
@@ -66,7 +65,7 @@ export async function createLetter({name,issueDate,validUntil}){
   }
   return y;
  }
- let y=paragraph([[LETTER_TEXT.firstBefore+' '+name+' '+LETTER_TEXT.firstAfter,regular]],463);
+ let y=paragraph([[LETTER_TEXT.firstBefore,regular],[name,bold],[LETTER_TEXT.firstAfter,regular]],463);
  y=paragraph([[LETTER_TEXT.second,regular]],y+60,{indent:23});
  y=paragraph([[LETTER_TEXT.thirdBefore,regular],[LETTER_TEXT.leaders,bold],[LETTER_TEXT.thirdAfter,regular]],y+60,{indent:23});
  if(y>1080)throw Error('O nome excede o espaço disponível nesta carta. Abrevie parte do nome.');

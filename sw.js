@@ -1,5 +1,5 @@
 // Atualiza somente os arquivos da interface. Nunca altera os registros do Firebase.
-const CACHE='iead-shell-v6-carta-vetorial';
+const CACHE='iead-shell-v8-carta-20261005';
 const base=new URL('./',self.location.href);
 const SHELL=['./','./index.html','./assets/app-20261003-carta-v2.js','./assets/style-20261003-carta.css','./firebase-service.js?v=20261003','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./manifest.webmanifest','./assets/letter-vector.js','./assets/vendor/ChurchRoman-Regular.ttf','./assets/vendor/ChurchRoman-Bold.ttf','./assets/vendor/fontkit.es.min.js','./assets/vendor/DejaVuSerif.ttf','./assets/vendor/pdf-lib.esm.min.js','./assets/carta-modelo-original.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL.map(p=>new URL(p,base).href))).then(()=>self.skipWaiting())));
